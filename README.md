@@ -26,7 +26,7 @@ I will declare my undying love for [SCHEME.GetTarget.GetShortUINameNoTooltip] an
 I declare my subconscious love for [SCHEME.GetTarget.GetShortUINameNoTooltip] to win [SCHEME.GetTarget.GetHerHis] heart through the great acts of Persia...
 ```
 
-Right now this randomly chooses between languages a random amount of time, but there's no way to exclude tokens from translation which is key. So I'll need to:
+Right now this randomly chooses between languages a random amount of times, but there's no way to exclude tokens from translation using the current library which is crucial. So I'll need to:
 
 1. Find a better source than (or a better way to use) Libre as a translator platform, like wrapping html tags around tokens and preventing it from translating these then stripping those tags after translate
 2. Create a full parsing engine that will read CK3's localization files and convert them to JSON key/value pairs, sanitizing the input
