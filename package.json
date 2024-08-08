@@ -1,0 +1,26 @@
+{
+  "name": "translate-mod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "grammarify": "^2.1.0",
+    "picocolors": "^1.0.1",
+    "translate": "^1.4.1",
+    "ts-node": "^10.9.2",
+    "uuidv7": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.1.0"
+  }
+}
