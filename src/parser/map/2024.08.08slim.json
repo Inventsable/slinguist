@@ -1,0 +1,16 @@
+{
+  "path": "D:/SteamLibrary/steamapps/common/Crusader Kings III/game/localization/english",
+  "name": "english",
+  "children": [
+    {
+      "name": "accolades",
+      "path": "D:/SteamLibrary/steamapps/common/Crusader Kings III/game/localization/english/accolades",
+      "children": [
+        {
+          "name": "accolades_l_english.yml",
+          "path": "D:/SteamLibrary/steamapps/common/Crusader Kings III/game/localization/english/accolades/accolades_l_english.yml"
+        }
+      ]
+    }
+  ]
+}

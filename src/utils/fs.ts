@@ -1,13 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-import * as color from "picocolors";
-
-export const lastInPath = (thePath: string) =>
-  thePath.substring(thePath.lastIndexOf(path.sep) + 1);
-
-export const getParentPath = (filePath: string) => {
-  return path.resolve("../");
-};
 
 export const renameFile = (oldFilePath: string, newFilePath: string) => {
   return new Promise((resolve, reject) => {
@@ -15,12 +7,21 @@ export const renameFile = (oldFilePath: string, newFilePath: string) => {
     fs.rename(
       path.resolve(oldFilePath),
       path.resolve(newFilePath),
-      function (err: any) {
+      (err: any) => {
         if (err) reject(false);
         else resolve(true);
       }
     );
   });
+};
+
+export const ensurePath = async (filePath: string) => {
+  const folders = path
+    .resolve(filePath)
+    .split(path.sep)
+    .map((v: string, i: number, a: string[]) => a.slice(0, i).join(path.sep))
+    .filter((v: string) => v.length);
+  for (let folder of folders) if (!exists(folder)) await makeFolder(folder);
 };
 
 export const writeFile = (
@@ -101,52 +102,53 @@ export const exists = (targetPath: string): boolean => {
   return fs.existsSync(path.resolve(targetPath));
 };
 
-export function isJSON(data: string): boolean {
+export const isJSON = (data: string): boolean => {
   try {
     JSON.parse(data);
     return true;
   } catch (err) {
     return false;
   }
-}
+};
 
-export async function deleteFolderContents(
-  targetPath: string,
-  listPaths = true
-): Promise<boolean> {
+export const deleteFolderContents = async (
+  targetPath: string
+): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     if (exists(targetPath)) {
       readDir(targetPath).then((list: string[]) => {
         for (let folder of list) {
-          console.log(
-            `${color.gray("|")}  • ${color.blue(
-              color.underline(`${targetPath}/${folder}`)
-            )} deleted`
-          );
           deleteFolder(`${targetPath}/${folder}`);
         }
         resolve(true);
       });
     } else reject(false);
   });
-}
+};
 
-export function deleteFolder(targetPath: string): boolean {
+export const deleteFolder = async (targetPath: string): Promise<boolean> => {
   try {
     fs.rmSync(path.resolve(targetPath), { recursive: true, force: true });
     return true;
   } catch (err) {
     return false;
   }
-}
+};
 
-export async function deleteFile(
+export const deleteFile = async (
   targetPath: string
-): Promise<boolean | string> {
+): Promise<boolean | string> => {
   return new Promise((resolve, reject) => {
     fs.unlink(path.resolve(targetPath), (err: any) => {
       if (err) reject(err);
       resolve(true);
     });
   });
-}
+};
+
+export const lastInPath = (filePath: string) =>
+  filePath.substring(filePath.lastIndexOf(path.sep) + 1);
+
+export const getParentPath = () => {
+  return path.resolve("../");
+};

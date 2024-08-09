@@ -8,3 +8,9 @@ export type TranslateNode = {
   title: string;
   desc: string;
 };
+
+export type LocalizationMapItem = {
+  path: string;
+  name: string;
+  children?: LocalizationMapItem[];
+};
