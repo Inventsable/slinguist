@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node ./src/index.ts"
+    "dev": "ts-node ./src/index.ts",
+    "parse": "ts-node ./src/parser/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "grammarify": "^2.1.0",
+    "js-yaml": "^4.1.0",
     "picocolors": "^1.0.1",
     "translate": "^1.4.1",
     "ts-node": "^10.9.2",

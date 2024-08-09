@@ -4,6 +4,7 @@ import { spinner, outro, intro, confirm, isCancel } from "@clack/prompts";
 const s = spinner();
 const fs = require("fs");
 const path = require("path");
+import type { Decorator, TranslateNode } from "../@types/index";
 import testCase from "../sandbox/source.json";
 import { format } from "date-fns";
 import { uuidv7 } from "uuidv7";
@@ -12,16 +13,6 @@ var grammarify = require("grammarify");
 // @ts-ignore
 import translate from "translate";
 import langModel from "./utils/languages.json";
-type Decorator = {
-  title?: string;
-  desc: string;
-};
-type TranslateNode = {
-  lang: string;
-  index: number;
-  title: string;
-  desc: string;
-};
 
 translate.engine = "libre";
 translate.key = process.env.TRANSLATE_KEY;
@@ -37,7 +28,7 @@ const LOG = {
 
 async function init() {
   intro(`${color.bgGreen(" TRANSLATE-MOD ")}`);
-  await testTranslation(testCase.nickname, true, false);
+  await testTranslation(testCase.islam, true, false);
   // await simpleTest();
 }
 
